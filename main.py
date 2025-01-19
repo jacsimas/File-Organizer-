@@ -8,8 +8,7 @@ import glob     #for finding files using patterns
 import keyboard
 
 class organizeFiles:
-    
-# cd C:\Users\jacsi\Documents\NetBeansProjects\FileOrganizer\
+
  
  
  def on_key_y(self):
