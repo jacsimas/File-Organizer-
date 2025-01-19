@@ -126,6 +126,42 @@ class organizeFiles:
   else:
    start() 
   
+ def Findfile(self): 
+    file = input("insert the name of a file, or atleast part of it, you want to find:") 
+    rootstring = "C://"
+    start_directory = input("root directory is 'C://' if you know where more or less to look at, insert the directory path, else skip:")
+    if not start_directory:
+     start_directory = "C://"
+    
+    last_directory = ' '
+      
+    for root, dirs, files in os.walk(start_directory):
+     rootstring = str(root)
+     dirstring = str(dirs)
+     filesstring = str(files)
+     
+     find = glob.glob(root + '/' + file + '.*')
+     if find:
+      print(" ")
+      print("found it in:")
+      print(root)
+      print(" ")
+      last_directory = root
+      for i in find:
+       
+       print(i)
+        
+    os.startfile(last_directory)
+    
+    repeat = input("want to find another file? PRESS any button if you want to continue, or ENTER if you want to quit")  
+    if not repeat:
+     start()
+    
+    else:
+     self.Findfile()
+      
+   # r"C:\Users\jacsi"     
+    
   
 def start(): 
  
@@ -136,6 +172,7 @@ def start():
  print("organize your files according to their format (f.e. .txt) and put them in newly created folders PRESS '1' ?")
  print("or just move files/folders from one directory to another PRESS '2'? ")
  print("you want to find a certain file by name in a certain folder? PRESS '3'")
+ print("you want to find a certain file by name anywhere on your C:// disc? PRESS '4'")
  print(" ")
  input1 = input()    
  if input1 == '1':
@@ -146,6 +183,8 @@ def start():
  
  if input1 == '3':
   obj.FindF()   
-  
+ 
+ if input1 == '4':
+  obj.Findfile()   
 
 start()  
